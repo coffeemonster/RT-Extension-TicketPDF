@@ -20,7 +20,7 @@ Use wkhtmltopdf to display a Ticket as a pdf.
 
 =head1 INSTALL
 
-    Requires: /usr/bin/wkhtmltopdf, IPC::Cmd
+    Requires: $RT::BinPath/wkhtmltopdf, IPC::Cmd
 
     perl Makefile.PL
     make
@@ -50,6 +50,9 @@ See http://dev.perl.org/licenses/ for more information.
 
 
 =head1 CHANGES
+
+Next
+    - Use binary in local $RT::BinPath/wkhtmltopdf instead of /usr/bin/..
 
 0.1.1  2012-12-19
     - Inital Release
