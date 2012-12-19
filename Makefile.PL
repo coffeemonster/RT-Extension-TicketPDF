@@ -12,7 +12,7 @@ WriteAll;
 
 =head1  BUILD
 
-    make clean
+    git clean -xfd
     DIST_BUILD=1 perl Makefile.PL
     make manifest
     make dist
