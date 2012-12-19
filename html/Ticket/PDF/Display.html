@@ -1,7 +1,7 @@
 <& /Ticket/Display.html, id => $id &>
 <style>
 /* force include of print.css if wkhtmltopdf option --print-media-type fails. */
-<& /NoAuth/css/print.css &>
+<link rel="stylesheet" href="/rt-sandbox/NoAuth/css/print.css" type="text/css" media="all" />
 .message-stanza-folder.closed { display: none }
 .message-stanza.closed { display: block }
 </style>
