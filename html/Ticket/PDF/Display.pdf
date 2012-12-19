@@ -1,0 +1,40 @@
+<%INIT>
+    # vim: syn=mason
+    use IPC::Run;
+
+    my $TicketObj = RT::Ticket->new( $session{'CurrentUser'} );
+    $TicketObj->Load( $id );
+    Abort('No ticket specified') unless $id =~ /\d/;
+
+    $TicketObj->CurrentUser->PrincipalObj->HasRights( Object => $TicketObj );
+    
+    my $title = loc("#[_1]: [_2]", $TicketObj->Id, $TicketObj->Subject || '');
+
+    # Untaint - don't allow random components
+    ($tpl) = $tpl =~ m/([\w.-]+)/;
+
+    my $html = $m->scomp( "/Ticket/PDF/$tpl.html", id => $id );
+
+    # Use installed converter to do the work.
+    my ($out, $err);
+    my @cmd = (qw{ /usr/bin/wkhtmltopdf --grayscale  --print-media-type  --disable-external-links  - - });
+
+    IPC::Run::run \@cmd, \$html, \$out, \$err
+        or Abort("Error: $err");
+
+    # Everything is cool - carry on.
+    if ($debug) {
+        $m->out( $html );
+    }
+    else {
+        # print pdf headers and pdf content
+        $r->content_type('application/pdf; charset=utf-8');
+        $m->out( $out );
+        $m->abort;
+    }
+</%INIT>
+<%ARGS>
+    $id    => undef
+    $tpl   => 'Display'
+    $debug => 0
+</%ARGS>

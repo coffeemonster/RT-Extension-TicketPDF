@@ -1,0 +1,11 @@
+<& /Ticket/Display.html, id => $id &>
+<style>
+/* force include of print.css if wkhtmltopdf option --print-media-type fails. */
+<& /NoAuth/css/print.css &>
+.message-stanza-folder.closed { display: none }
+.message-stanza.closed { display: block }
+</style>
+<%ARGS>
+    $id => undef
+</%ARGS>
+
