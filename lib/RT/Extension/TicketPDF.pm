@@ -6,11 +6,11 @@ use warnings;
 
 =head1 NAME
 
-RT::Extension::TicketPDF - send email to groups
+RT::Extension::TicketPDF - make pdfs from tickets.
 
 =cut
 
-our $VERSION = '0.1.1';
+our $VERSION = '0.1.2';
 
 =head1 SYNOPSIS
 
@@ -56,7 +56,7 @@ See http://dev.perl.org/licenses/ for more information.
 
 =head1 CHANGES
 
-Next
+0.1.2  2012-12-20
     - Use binary in local $RT::LocalPath/bin/wkhtmltopdf instead of /usr/bin/..
     - Including wkhtmltopdf v10.0rc2 to avoid QPixmap Seg-fault bug in v11.0rc1
     - GeneratePDF menu item added.
