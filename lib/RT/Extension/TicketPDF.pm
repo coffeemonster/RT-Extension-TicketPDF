@@ -36,7 +36,12 @@ Please report any bugs at either:
 
     L<http://search.cpan.org/dist/RT-Extension-TicketPDF/>
     L<https://github.com/coffeemonster/rt-extension-ticketpdf>
-    
+
+wkhtmltopdf known-issues:
+
+    images render blank - This is a limitation with v10. Use JPG's for all images.
+    QPixmap > Seg-fault - A bug with v11rc1 use v10rc2
+
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -52,7 +57,10 @@ See http://dev.perl.org/licenses/ for more information.
 =head1 CHANGES
 
 Next
-    - Use binary in local $RT::BinPath/wkhtmltopdf instead of /usr/bin/..
+    - Use binary in local $RT::LocalPath/bin/wkhtmltopdf instead of /usr/bin/..
+    - Including wkhtmltopdf v10.0rc2 to avoid QPixmap Seg-fault bug in v11.0rc1
+    - GeneratePDF menu item added.
+    - Simple Template added.
 
 0.1.1  2012-12-19
     - Inital Release
