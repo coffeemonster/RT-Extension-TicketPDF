@@ -29,6 +29,9 @@ Use wkhtmltopdf to display a Ticket as a pdf.
     # Enable this plugin in your RT_SiteConfig.pm:
     Plugin('RT::Extension::TicketPDF');
 
+    # For pre-RT 4.4.5, patch RT
+    patch -p1 -d /opt/rt4 < patches/show-history.patch
+
 This extension provides a legacy version of C<wkhtmltopdf> which works
 on Linux systems. Newer versions of the utility have issues importing
 local CSS and JS resources and currently do not work with this extension.
