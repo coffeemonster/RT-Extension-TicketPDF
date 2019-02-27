@@ -1,11 +1,11 @@
 <style>
 /* forcing print.css if wkhtmltopdf option --print-media-type fails. */
-#quickbar, #main-navigation, #page-navigation, #topactions { display: none }
-.message-stanza-folder.closed { display: none }
-.message-stanza.closed { display: block }
 
 % # For RT 4.0
 % if ($m->comp_exists('/NoAuth/css/print.css') ) {
+#quickbar, #main-navigation, #page-navigation, #topactions { display: none }
+#.message-stanza-folder.closed { display: none }
+#.message-stanza.closed { display: block }
     <& /NoAuth/css/print.css &>
 % }
 % # RT 4.4
@@ -14,7 +14,10 @@
 % }
 </style>
 <%INIT>
-return unless $ARGSRef->{'TicketPDF'};
+# Get args from call to /Ticket/Display.html
+my %request_args = $m->caller_args(2);
+return unless $request_args{'TicketPDF'};
+
 my $print_css_path = $RT::StaticPath . '/css/base/print.css';
 my $print_css;
 
